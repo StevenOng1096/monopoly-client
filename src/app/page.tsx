@@ -33,10 +33,10 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 flex items-center justify-center p-4 safe-area-padding">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-amber-300 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold text-amber-300 tracking-tight">
             World Monopoly
           </h1>
           <p className="text-emerald-200 mt-2">

@@ -143,7 +143,8 @@ export function SpaceDetailPopup({
           {space.rent && (
             <div className="mt-4 pt-4 border-t border-slate-700">
               <p className="text-xs uppercase tracking-wider text-slate-500 mb-2">Rent</p>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="h-scroll-slider -mx-1 px-1 pb-1">
+                <div className="grid grid-cols-3 gap-2 min-w-[280px] sm:min-w-0">
                 {space.rent.map((rent, i) => (
                   <div
                     key={i}
@@ -153,6 +154,7 @@ export function SpaceDetailPopup({
                     <span className="text-emerald-300 font-semibold">${rent}</span>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
           )}
@@ -162,7 +164,8 @@ export function SpaceDetailPopup({
               <p className="text-xs uppercase tracking-wider text-slate-500 mb-2">
                 Cost to build 1–4 houses & 1 hotel
               </p>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="h-scroll-slider -mx-1 px-1 pb-1">
+                <div className="grid grid-cols-5 gap-2 min-w-[300px] sm:min-w-0">
                 {(['1 House', '2 Houses', '3 Houses', '4 Houses', 'Hotel'] as const).map(
                   (label, i) => {
                     const costs = getHouseUpgradeCosts(space.houseCost!);
@@ -182,6 +185,7 @@ export function SpaceDetailPopup({
                     );
                   },
                 )}
+                </div>
               </div>
               <p className="text-[10px] text-slate-500 mt-2">
                 ${space.houseCost} per house · cumulative from empty lot

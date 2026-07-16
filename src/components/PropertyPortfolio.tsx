@@ -42,7 +42,7 @@ export function PropertyPortfolio({
   if (!yourId) return null;
 
   return (
-    <div className="bg-slate-900/90 rounded-xl p-4 border border-slate-700 w-full max-w-sm">
+    <div className="bg-slate-900/90 rounded-xl p-3 sm:p-4 border border-slate-700 w-full max-w-sm">
       <h3 className="text-lg font-bold text-amber-300 mb-1">My Properties</h3>
       <p className="text-xs text-slate-400 mb-4">
         Manage countries · mortgage for cash or unmortgage to collect rent
@@ -91,17 +91,19 @@ export function PropertyPortfolio({
                   </div>
 
                   {space.rent && !isMortgaged && (
-                    <div className="mt-2 grid grid-cols-3 gap-1 text-[10px]">
-                      <div className="bg-slate-900/60 px-1.5 py-1 rounded text-center">
-                        <span className="text-slate-500 block">Rent</span>
-                        <span className="text-emerald-300 font-medium">${space.rent[0]}</span>
-                      </div>
-                      {isBuildable && space.rent[5] && (
-                        <div className="bg-slate-900/60 px-1.5 py-1 rounded text-center col-span-2">
-                          <span className="text-slate-500 block">Max (Hotel)</span>
-                          <span className="text-amber-300 font-medium">${space.rent[5]}</span>
+                    <div className="mt-2 h-scroll-slider -mx-1 px-1 pb-1">
+                      <div className="grid grid-cols-3 gap-1 text-[10px] min-w-[240px] sm:min-w-0">
+                        <div className="bg-slate-900/60 px-1.5 py-1 rounded text-center">
+                          <span className="text-slate-500 block">Rent</span>
+                          <span className="text-emerald-300 font-medium">${space.rent[0]}</span>
                         </div>
-                      )}
+                        {isBuildable && space.rent[5] && (
+                          <div className="bg-slate-900/60 px-1.5 py-1 rounded text-center col-span-2">
+                            <span className="text-slate-500 block">Max (Hotel)</span>
+                            <span className="text-amber-300 font-medium">${space.rent[5]}</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
 
@@ -116,7 +118,8 @@ export function PropertyPortfolio({
                       <p className="text-[10px] uppercase tracking-wider text-slate-500 mb-2">
                         Build costs (${space.houseCost} each)
                       </p>
-                      <div className="grid grid-cols-5 gap-1">
+                      <div className="h-scroll-slider -mx-1 px-1 pb-1">
+                        <div className="grid grid-cols-5 gap-1 min-w-[260px] sm:min-w-0">
                         {HOUSE_LABELS.map((label, i) => {
                           const costKey = ['house1', 'house2', 'house3', 'house4', 'hotel'][
                             i
@@ -145,6 +148,7 @@ export function PropertyPortfolio({
                             </div>
                           );
                         })}
+                        </div>
                       </div>
                     </div>
                   )}

@@ -59,7 +59,7 @@ export function GameControls({
   }
 
   return (
-    <div className="bg-slate-900/90 rounded-xl p-5 border border-slate-700 space-y-4 w-full max-w-sm shadow-xl">
+    <div className="bg-slate-900/90 rounded-xl p-4 sm:p-5 border border-slate-700 space-y-3 sm:space-y-4 w-full max-w-sm shadow-xl">
       <div className="bg-slate-800/50 rounded-lg px-3 py-2 min-h-[3rem] flex items-center">
         <p className="text-sm text-slate-200 leading-snug">{game.message}</p>
       </div>

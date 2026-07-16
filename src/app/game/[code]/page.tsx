@@ -72,16 +72,16 @@ export default function GamePage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 p-3 sm:p-4">
+    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 p-3 sm:p-4 safe-area-padding">
       {isFinished && <GameOverOverlay room={room} onExit={handleExit} />}
 
       <div className="max-w-[1600px] mx-auto">
-        <header className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div>
-            <h1 className="text-xl sm:text-2xl font-black text-amber-300 tracking-tight">
+        <header className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-lg sm:text-2xl font-black text-amber-300 tracking-tight truncate">
               World Monopoly
             </h1>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs sm:text-sm text-slate-400">
               Room {room.code} · {room.players.filter((p) => !p.isBankrupt).length} active
               {isAnimating && (
                 <span className="ml-2 text-amber-400/80 animate-pulse">· Animating...</span>
@@ -91,9 +91,9 @@ export default function GamePage() {
           {!isFinished && (
             <button
               onClick={handleExit}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-sm rounded-xl border border-slate-600 transition"
+              className="shrink-0 px-3 sm:px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm rounded-xl border border-slate-600 transition"
             >
-              Leave Game
+              Leave
             </button>
           )}
         </header>
@@ -104,20 +104,29 @@ export default function GamePage() {
           </p>
         )}
 
-        <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 items-start justify-center">
-          <div className="w-full xl:flex-1 overflow-x-auto flex justify-center">
-            <GameBoard
-              room={room}
-              displayPositions={displayPositions}
-              diceAnimation={diceAnimation}
-              movingPlayerId={isAnimating ? movingPlayerId : null}
-              canManageProperties={canManageProperties}
-              onMortgage={(idx) => mortgageProperty(code, idx)}
-              onUnmortgage={(idx) => unmortgageProperty(code, idx)}
-            />
+        <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 lg:gap-6 items-stretch lg:items-start justify-center">
+          <div className="w-full lg:flex-1 min-w-0">
+            <p className="text-[10px] text-amber-400/70 text-center mb-1.5 sm:hidden">
+              ← Swipe board to explore →
+            </p>
+            <div className="scroll-fade-x">
+              <div className="h-scroll-slider h-scroll-slider--centered pb-2">
+                <div className="h-scroll-slider__content">
+                  <GameBoard
+                    room={room}
+                    displayPositions={displayPositions}
+                    diceAnimation={diceAnimation}
+                    movingPlayerId={isAnimating ? movingPlayerId : null}
+                    canManageProperties={canManageProperties}
+                    onMortgage={(idx) => mortgageProperty(code, idx)}
+                    onUnmortgage={(idx) => unmortgageProperty(code, idx)}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full xl:w-[340px] shrink-0 flex flex-col gap-4">
+          <div className="w-full lg:w-[340px] shrink-0 flex flex-col gap-3 sm:gap-4 mx-auto lg:mx-0">
             {!isFinished && (
               <GameControls
                 room={room}
@@ -137,14 +146,17 @@ export default function GamePage() {
                 <button
                   key={tab.id}
                   onClick={() => setSidebarTab(tab.id)}
-                  className={`flex-1 py-2 px-2 rounded-lg text-xs sm:text-sm font-medium transition ${
+                  className={`flex-1 min-w-0 py-2 px-1.5 sm:px-2 rounded-lg text-[11px] sm:text-sm font-medium transition ${
                     sidebarTab === tab.id
                       ? 'bg-amber-500 text-slate-900 shadow'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800'
                   }`}
                 >
-                  <span className="mr-1">{tab.icon}</span>
-                  {tab.label}
+                  <span className="sm:mr-1">{tab.icon}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">
+                    {tab.id === 'properties' ? 'Props' : tab.label}
+                  </span>
                 </button>
               ))}
             </div>

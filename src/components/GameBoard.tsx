@@ -47,10 +47,10 @@ function SpaceCell({
 
   const sizeClass =
     orientation === 'corner'
-      ? 'w-[72px] h-[72px] sm:w-24 sm:h-24'
+      ? 'w-14 h-14 sm:w-[72px] sm:h-[72px] md:w-24 md:h-24'
       : orientation === 'bottom' || orientation === 'top'
-        ? 'w-12 h-[72px] sm:w-16 sm:h-24'
-        : 'w-[72px] h-12 sm:w-24 sm:h-16';
+        ? 'w-10 h-14 sm:w-12 sm:h-[72px] md:w-16 md:h-24'
+        : 'w-14 h-10 sm:w-[72px] sm:h-12 md:w-24 md:h-16';
 
   const typeIcon =
     space.type === 'chance'
@@ -187,8 +187,8 @@ export function GameBoard({
 
   return (
     <>
-      <div className="inline-block bg-gradient-to-br from-emerald-950 to-slate-950 p-2 sm:p-3 rounded-2xl shadow-2xl border-4 border-amber-600/80">
-        <p className="text-[10px] sm:text-xs text-slate-400 text-center mb-2">
+      <div className="inline-block bg-gradient-to-br from-emerald-950 to-slate-950 p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl shadow-2xl border-2 sm:border-4 border-amber-600/80">
+        <p className="text-[9px] sm:text-xs text-slate-400 text-center mb-1.5 sm:mb-2">
           Tap any space for full property details
         </p>
 
@@ -242,12 +242,12 @@ export function GameBoard({
               ))}
             </div>
 
-            <div className="relative flex-1 min-w-[220px] sm:min-w-[300px] min-h-[108px] sm:min-h-[144px] bg-gradient-to-br from-emerald-800/70 via-emerald-900/80 to-slate-900/90 flex flex-col items-center justify-center p-3 border border-emerald-700/50 overflow-hidden">
+            <div className="relative flex-1 min-w-[160px] sm:min-w-[220px] md:min-w-[300px] min-h-[80px] sm:min-h-[108px] md:min-h-[144px] bg-gradient-to-br from-emerald-800/70 via-emerald-900/80 to-slate-900/90 flex flex-col items-center justify-center p-2 sm:p-3 border border-emerald-700/50 overflow-hidden">
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-400 to-transparent" />
 
               {!diceAnimation && (
                 <div className="relative z-10 text-center pointer-events-none">
-                  <h2 className="text-lg sm:text-2xl font-black text-amber-300 tracking-wide drop-shadow">
+                  <h2 className="text-sm sm:text-lg md:text-2xl font-black text-amber-300 tracking-wide drop-shadow">
                     WORLD MONOPOLY
                   </h2>
                   <p className="text-emerald-200/80 text-[10px] sm:text-sm mt-0.5">

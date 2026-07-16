@@ -48,10 +48,10 @@ export default function WaitingRoomPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 flex items-center justify-center p-4 safe-area-padding">
       <div className="w-full max-w-lg">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-amber-300">Waiting Room</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-amber-300">Waiting Room</h1>
           <div className="mt-3 inline-flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-lg">
             <span className="text-slate-400 text-sm">Room Code:</span>
             <span className="text-2xl font-mono font-bold text-white tracking-widest">
